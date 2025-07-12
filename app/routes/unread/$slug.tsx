@@ -28,11 +28,11 @@ export function loader({ params: { slug } }: LoaderArgs) {
     });
 }
 
-export const meta: MetaFunction = ({ data }) => {
-    return {
+export const meta: MetaFunction = ({ data }) => [
+    {
         title: `${APP_NAME}: ${data.slug}`,
-    };
-};
+    },
+];
 
 export const action = async ({ request, params: { slug } }: ActionArgs) => {
     const formData = await request.formData();

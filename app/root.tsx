@@ -48,9 +48,9 @@ export function ErrorBoundary() {
     );
 }
 
-export const meta: MetaFunction = () => ({
+export const meta: MetaFunction = () => [{
     title: "New Remix App",
-});
+}];
 
 export const links: LinksFunction = () => [
     { rel: "stylesheet", href: baseStyles },

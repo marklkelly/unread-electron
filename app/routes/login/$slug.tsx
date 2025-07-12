@@ -86,14 +86,14 @@ export function loader({
     return json({ slug: slug });
 }
 
-export const meta: MetaFunction = () => {
-    return {
+export const meta: MetaFunction = () => [
+    {
         refresh: {
             httpEquiv: "refresh",
             content: "1",
         },
-    };
-};
+    },
+];
 
 export default function Login() {
     const { slug } = useLoaderData<LoaderData>();
