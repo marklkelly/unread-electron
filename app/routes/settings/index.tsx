@@ -26,11 +26,11 @@ export function loader({}: LoaderArgs) {
     });
 }
 
-export const meta: MetaFunction = () => {
-    return {
+export const meta: MetaFunction = () => [
+    {
         title: `${APP_NAME}: Settings`,
-    };
-};
+    },
+];
 
 export const action = async ({ request }: ActionArgs) => {
     const formData = await request.formData();

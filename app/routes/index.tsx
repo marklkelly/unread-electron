@@ -9,11 +9,11 @@ export function loader({}: LoaderArgs) {
     return json({ slackTeams: getTeamSlugs(), hasOpenAIKey: !!getOpenAIKey() });
 }
 
-export const meta: MetaFunction = () => {
-    return {
+export const meta: MetaFunction = () => [
+    {
         title: `${APP_NAME}: Slack Teams`,
-    };
-};
+    },
+];
 
 export default function Index() {
     const { slackTeams, hasOpenAIKey } =
