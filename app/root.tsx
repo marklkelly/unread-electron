@@ -6,13 +6,32 @@ import {
     Outlet,
     Scripts,
     ScrollRestoration,
-    useCatch,
+    useRouteError,
+    isRouteErrorResponse,
 } from "@remix-run/react";
 import baseStyles from "./styles/base.css";
 import tailwindStyles from "./styles/compiledtailwind.css";
 
-export function CatchBoundary() {
-    const caught = useCatch();
+export function ErrorBoundary() {
+    const error = useRouteError();
+    if (isRouteErrorResponse(error)) {
+        return (
+            <html>
+                <head>
+                    <title>Oops!</title>
+                    <Meta />
+                    <Links />
+                </head>
+                <body className="flex flex-col items-center justify-center h-screen">
+                    <h1>
+                        {error.status} {error.statusText}
+                    </h1>
+                    <pre>{error.data}</pre>
+                    <Scripts />
+                </body>
+            </html>
+        );
+    }
     return (
         <html>
             <head>
@@ -21,10 +40,8 @@ export function CatchBoundary() {
                 <Links />
             </head>
             <body className="flex flex-col items-center justify-center h-screen">
-                <h1>
-                    {caught.status} {caught.statusText}
-                </h1>
-                <pre>{caught.data}</pre>
+                <h1>Unknown Error</h1>
+                <pre>{error instanceof Error ? error.message : String(error)}</pre>
                 <Scripts />
             </body>
         </html>
