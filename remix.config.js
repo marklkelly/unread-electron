@@ -7,4 +7,10 @@ module.exports = {
   publicPath: "/build/",
   serverBuildPath: "desktop/build/index.js",
   devServerPort: 8002,
+  browserNodeBuiltinsPolyfill: {
+    modules: {
+      fs: true,
+      path: true,
+    },
+  },
 }
