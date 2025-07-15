@@ -1,8 +1,7 @@
 import { useLoaderData } from "@remix-run/react";
 import { json, MetaFunction, redirect, TypedResponse } from "@remix-run/node";
-import { BrowserWindow, session } from "electron";
-
-import type { Cookie } from "electron";
+import electron from "~/electron.server";
+import type { BrowserWindow, Cookie } from "electron";
 
 import { clearAuthState, storeCredentials } from "~/unread/slack/index.server";
 import { APP_NAME } from "~/unread/config";
@@ -51,6 +50,7 @@ export function loader({
 }: {
     params: { slug: string };
 }): TypedResponse<LoaderData> {
+    const { BrowserWindow, session } = electron;
     const destinationUrl = `https://${slug}.slack.com/unreads`;
 
     if (!slackWindow) {
