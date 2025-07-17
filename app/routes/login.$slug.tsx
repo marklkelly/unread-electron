@@ -1,6 +1,6 @@
 import { useLoaderData } from "@remix-run/react";
 import { json, MetaFunction, redirect, TypedResponse } from "@remix-run/node";
-// Import Electron only on the server to keep it out of the browser bundle
+// Import Electron only on the server so Node builtins aren't bundled
 import electron from "~/electron.server";
 import type { BrowserWindow, Cookie } from "electron";
 
