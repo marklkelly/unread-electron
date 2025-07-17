@@ -7,7 +7,4 @@ module.exports = {
   publicPath: "/build/",
   serverBuildPath: "desktop/build/index.js",
   devServerPort: 8002,
-  future: {
-    v2_routeConvention: true,
-  },
 }
